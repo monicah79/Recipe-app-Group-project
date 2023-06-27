@@ -1,6 +1,52 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @recipe %>
+
+<main>
+<h1>Recipe</h1>
+
+<div class="container-time">
+  <p>
+    <strong>Preparation time:</strong>
+    <%= @recipe.preparation_time %>
+  </p>
+
+  <p>
+    <strong>Cooking time:</strong>
+    <%= @recipe.cooking_time %>
+  </p>
+  <p>
+    <strong>steps goes here</strong>
+   
+  </p>
+</div>
+<%= link_to "Add ingredient", new_food_path(@foods) %> |
+
+<% if @foods&.empty? %>
+    <p>No foods available.</p>
+  <% else %>
+    <table>
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Actions</th>   
+        </tr>
+      </thead>
+      <tbody>
+       <% @foods.each do |food| %>
+          <tr>
+            <td><%= food.name %></td>
+            <td><%= food.measurement_unit.to_i * food.price.to_i %></td>
+            <td><%= food.price %></td>
+     
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+</main>
+
 
 <div>
   <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
