@@ -21,6 +21,8 @@ nav li {
   justify-content: center;
 }
 
+
+
 nav li {
   list-style-type: none;
 }
@@ -32,4 +34,15 @@ nav li a {
 
 nav a:active {
   font-weight: bold;
+}
+
+.shopping-list-heading{
+  text-align: center;
+}
+
+.food-limit {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin: 0 160px;
 }

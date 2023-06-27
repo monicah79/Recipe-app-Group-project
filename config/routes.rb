@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :recipes do
     patch 'toggle_visibility', on: :member
   end
+  resources :public_recipes
+  resources :shopping_list
   resources :inventories
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
