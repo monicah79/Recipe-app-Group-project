@@ -98,7 +98,7 @@ th {
   transition: background-color 0.3s;
 }
 
-.toggle-label:before {
+.toggle-label::before {
   content: '';
   position: absolute;
   width: 26px;
@@ -114,7 +114,7 @@ th {
   background-color: green;
 }
 
-.toggle-switch .toggle-checkbox:checked + .toggle-label:before {
+.toggle-switch .toggle-checkbox:checked + .toggle-label::before {
   transform: translateX(26px);
 }
 
