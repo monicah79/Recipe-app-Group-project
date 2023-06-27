@@ -14,7 +14,6 @@ class RecipesController < ApplicationController
     @recipe_foods = RecipeFood.find_by(recipe_id: @recipe.id)
   end
 
-
   # GET /recipes/new
   def new
     @recipe = Recipe.new
@@ -23,8 +22,8 @@ class RecipesController < ApplicationController
   # GET /recipes/1/edit
   def edit; end
 
-   # POST /recipies or /recipies.json
-   def create
+  # POST /recipies or /recipies.json
+  def create
     current_user
     @recipe = current_user.recipes.build(recipe_params)
     p 'tobe saved recipe -------', @recipe
