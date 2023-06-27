@@ -1,4 +1,5 @@
 class InventoriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_inventory, only: %i[show edit update destroy]
 
   # GET /inventories or /inventories.json
@@ -19,7 +20,9 @@ class InventoriesController < ApplicationController
 
   # POST /inventories or /inventories.json
   def create
-    @inventory = Inventory.new(inventory_params)
+    current_user
+    @inventory = current_user.inventories.build(inventory_params)
+    p 'tobe saved inventory -------', @inventory
 
     respond_to do |format|
       if @inventory.save
@@ -64,6 +67,6 @@ class InventoriesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def inventory_params
-    params.require(:inventory).permit(:name, :user_id)
+    params.require(:inventory).permit(:name, :description)
   end
 end
