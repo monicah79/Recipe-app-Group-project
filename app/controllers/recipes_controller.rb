@@ -10,7 +10,8 @@ class RecipesController < ApplicationController
   # GET /recipes/1 or /recipes/1.json
   def show
     @foods = Food.all
-    @recipe_foods = RecipeFood.all
+    @recipe_food = RecipeFood.includes(recipe: :food).where(recipe_id: params[:id])
+    @recipe_foods = RecipeFood.find_by(recipe_id: @recipe.id)
   end
 
 

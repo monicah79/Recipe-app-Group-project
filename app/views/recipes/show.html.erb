@@ -22,10 +22,6 @@
   </div>
   <button>Public</button>
 
-  <p>
-  Public: <%= @recipe.public? ? 'Yes' : 'No' %>
-  <%= link_to 'Toggle Visibility', toggle_visibility_recipe_path(@recipe), method: :patch %>
-</p>
 </div>
 
 <div class="add-ingredient-container">
@@ -44,15 +40,15 @@
         </tr>
       </thead>
       <tbody>
-       <% @recipe_foods.each do |recipe_food| %>
+       <% @recipe_food.each do |recipe| %>
           <tr>
-            <td><%= recipe_food.food.name %></td>
-            <td><%= recipe_food.quantity.to_i * recipe_food.food.price.to_i %> <%= recipe_food.food.measurement_unit%> </td>
+            <td><%= recipe.food.name %></td>
+            <td><%= recipe.quantity.to_i * recipe.food.price.to_i %> <%= recipe.food.measurement_unit%> </td>
          
-            <td><%= recipe_food.quantity %></td>
+            <td><%= recipe.quantity %></td>
            <td> 
-           <%= link_to "Modify", edit_recipe_path(@recipe) %> 
-           <%= button_to "Remove", @recipe, method: :delete %>
+           <%= link_to "Modify", edit_recipe_food_path(@recipe_foods) %> 
+           <%= button_to "Remove", @recipe_foods, method: :delete %>
            </td>
           </tr>
         <% end %>
