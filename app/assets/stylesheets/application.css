@@ -21,8 +21,6 @@ nav li {
   justify-content: center;
 }
 
-
-
 nav li {
   list-style-type: none;
 }
@@ -36,7 +34,7 @@ nav a:active {
   font-weight: bold;
 }
 
-.shopping-list-heading{
+.shopping-list-heading {
   text-align: center;
 }
 
