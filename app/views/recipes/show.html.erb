@@ -1,10 +1,65 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @recipe %>
 
+<main>
+<h1>Recipe <%= @recipe.id %></h1>
+
+<div class="container-time">
 <div>
-  <%= link_to "Edit this recipe", edit_recipe_path(@recipe) %> |
-  <%= link_to "Back to recipes", recipes_path %>
+  <p>
+    <strong>Preparation time:</strong>
+    <%= @recipe.preparation_time  %> hours
+  </p>
 
-  <%= button_to "Destroy this recipe", @recipe, method: :delete %>
+  <p>
+    <strong>Cooking time:</strong>
+    <%= @recipe.cooking_time  %> hours
+  </p>
+  <p>
+    <strong>Steps goes here</strong>
+   
+  </p>
+  </div>
+  <button>Public</button>
+
 </div>
+
+<div class="add-ingredient-container">
+<%= link_to "Add ingredient", new_recipe_food_path(@recipe_food), class: "add-ingredient" %> 
+</div>
+<% if @foods&.empty? %>
+    <p>No foods available.</p>
+  <% else %>
+    <table>
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Values</th>   
+          <th>Actions</th>   
+        </tr>
+      </thead>
+      <tbody>
+       <% @recipe_food.each do |recipe| %>
+          <tr>
+            <td><%= recipe.food.name %></td>
+            <td><%= recipe.quantity.to_i * recipe.food.price.to_i %> <%= recipe.food.measurement_unit%> </td>
+         
+            <td><%= recipe.quantity %></td>
+           <td> 
+           <%= link_to "Modify", edit_recipe_food_path(@recipe_foods) %> 
+           <%= button_to "Remove", @recipe_foods, method: :delete %>
+           </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+<div class="back-recipes-container">
+  <%= link_to "Back to recipes", recipes_path, class: "back-recipes" %>
+</div>
+
+</main>
+
+

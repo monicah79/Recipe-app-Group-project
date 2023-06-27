@@ -18,12 +18,12 @@
 
   <div>
     <%= form.label :recipe_id, style: "display: block" %>
-    <%= form.text_field :recipe_id %>
+    <%= form.collection_select :recipe_id, Recipe.all, :id, :name %>
   </div>
 
-  <div>
+ <div>
     <%= form.label :food_id, style: "display: block" %>
-    <%= form.text_field :food_id %>
+    <%= form.collection_select :food_id, Food.all, :id, :name %>
   </div>
 
   <div>

@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_recipe, only: %i[show edit update destroy]
 
   # GET /recipes or /recipes.json
@@ -7,7 +8,11 @@ class RecipesController < ApplicationController
   end
 
   # GET /recipes/1 or /recipes/1.json
-  def show; end
+  def show
+    @foods = Food.all
+    @recipe_food = RecipeFood.includes(recipe: :food).where(recipe_id: params[:id])
+    @recipe_foods = RecipeFood.find_by(recipe_id: @recipe.id)
+  end
 
   # GET /recipes/new
   def new
@@ -17,13 +22,15 @@ class RecipesController < ApplicationController
   # GET /recipes/1/edit
   def edit; end
 
-  # POST /recipes or /recipes.json
+  # POST /recipies or /recipies.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    current_user
+    @recipe = current_user.recipes.build(recipe_params)
+    p 'tobe saved recipe -------', @recipe
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully created.' }
+        format.html { redirect_to recipe_url(@recipe), notice: 'recipe was successfully created.' }
         format.json { render :show, status: :created, location: @recipe }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -31,6 +38,21 @@ class RecipesController < ApplicationController
       end
     end
   end
+
+  # # POST /recipes or /recipes.json
+  # def create
+  #   @recipe = Recipe.new(recipe_params)
+
+  #   respond_to do |format|
+  #     if @recipe.save
+  #       format.html { redirect_to recipe_url(@recipe), notice: 'Recipe was successfully created.' }
+  #       format.json { render :show, status: :created, location: @recipe }
+  #     else
+  #       format.html { render :new, status: :unprocessable_entity }
+  #       format.json { render json: @recipe.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   # PATCH/PUT /recipes/1 or /recipes/1.json
   def update
@@ -53,6 +75,12 @@ class RecipesController < ApplicationController
       format.html { redirect_to recipes_url, notice: 'Recipe was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def toggle_visibility
+    @recipe = Recipe.find(params[:id])
+    @recipe.update(public: !@recipe.public)
+    redirect_to @recipe
   end
 
   private
