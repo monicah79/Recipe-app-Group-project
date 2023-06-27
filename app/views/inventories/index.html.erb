@@ -1,13 +1,19 @@
+<%
+=begin%>
+ <%= javascript_importmap_tags %> 
+<%
+=end%>
+
 <p style="color: green"><%= notice %></p>
 
 <h1>Inventories</h1>
 
 <div id="inventories">
   <% @inventories.each do |inventory| %>
-    <%= render inventory %>
-    <p>
-      <%= link_to "Show this inventory", inventory %>
-    </p>
+    <%= link_to inventory_path(inventory) do %>
+      <%= render inventory %>       
+    <% end %>
+    <%= button_to "Remove", inventory, method: :delete %>
   <% end %>
 </div>
 

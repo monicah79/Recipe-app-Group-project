@@ -22,7 +22,6 @@ class InventoriesController < ApplicationController
   def create
     current_user
     @inventory = current_user.inventories.build(inventory_params)
-    p 'tobe saved inventory -------', @inventory
 
     respond_to do |format|
       if @inventory.save
@@ -50,6 +49,7 @@ class InventoriesController < ApplicationController
 
   # DELETE /inventories/1 or /inventories/1.json
   def destroy
+    @inventory.inventory_foods.destroy_all if @inventory.inventory_foods.exists?
     @inventory.destroy
 
     respond_to do |format|
@@ -62,7 +62,7 @@ class InventoriesController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_inventory
-    @inventory = Inventory.find(params[:id])
+    @inventory = Inventory.includes(inventory_foods: :food).find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

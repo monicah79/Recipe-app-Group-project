@@ -12,6 +12,7 @@ class InventoryFoodsController < ApplicationController
   # GET /inventory_foods/new
   def new
     @inventory_food = InventoryFood.new
+    session[:return_to] = request.referer
   end
 
   # GET /inventory_foods/1/edit
@@ -24,7 +25,7 @@ class InventoryFoodsController < ApplicationController
     respond_to do |format|
       if @inventory_food.save
         format.html do
-          redirect_to inventory_food_url(@inventory_food), notice: 'Inventory food was successfully created.'
+          redirect_to session.delete(:return_to) || root_path, notice: 'Inventory food was successfully created.'
         end
         format.json { render :show, status: :created, location: @inventory_food }
       else

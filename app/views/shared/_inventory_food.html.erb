@@ -1,9 +1,6 @@
-<%
-=begin%>
- <p style="color: green"><%= notice %></p>
 <div>
-  <%= @inventory.name %>
-  <p><%= @inventory.description %><p>
+  <%= inventory.name %>
+  <p><%= inventory.description %><p>
   <%= link_to "Add Food", new_food_url, class: "a-button" %>
   <%= link_to "Add Food Inventory", new_inventory_food_url, class: "a-button" %>
 
@@ -16,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-        <% @inventory.inventory_foods.each do |inventory_food| %>
+        <% inventory.inventory_foods.each do |inventory_food| %>
           <tr>
             <td><%= inventory_food.food.name %></td>
             <td><%= inventory_food.quantity%> <%= inventory_food.food.measurement_unit %></td>
@@ -29,11 +26,8 @@
 </div>
 
 <div>
-  <%= link_to "Edit this inventory", edit_inventory_path(@inventory) %> |
+  <%= link_to "Edit this inventory", edit_inventory_path(inventory) %> |
   <%= link_to "Back to inventories", inventories_path %>
 
-  <%= button_to "Destroy this inventory", @inventory, method: :delete %>
-</div> 
-<%
-=end%>
-<%= render "shared/inventory_food", inventory: @inventory %>
+  <%= button_to "Destroy this inventory", inventory, method: :delete %>
+</div>
