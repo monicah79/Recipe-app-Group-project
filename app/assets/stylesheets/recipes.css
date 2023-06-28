@@ -4,10 +4,11 @@ ul {
   gap: 20px;
 }
 
-li {
+li,
+.inventory-container {
   border: 2px solid black;
   display: flex;
-  padding: 20px;
+  padding: 10px;
   justify-content: space-between;
 }
 
@@ -30,7 +31,7 @@ a {
 /* recipe show */
 
 main {
-  margin: 5% 3%;
+  margin: 5% 5%;
 }
 
 main > h1 {
@@ -49,14 +50,21 @@ main > h1 {
 }
 
 .add-ingredient,
-.back-recipes {
+.back-recipes,
+.add-inventory,
+.a-button {
   text-decoration: none;
   padding: 5px;
   border: 1px solid;
   color: black;
 }
 
-.add-ingredient:hover {
+.add-inventory {
+  width: 10%;
+}
+
+.add-ingredient:hover,
+.a-button:hover {
   padding: 7px;
   background-color: black;
   color: white;
@@ -73,4 +81,8 @@ td,
 th {
   border: 1px solid;
   border-collapse: collapse;
+}
+
+td {
+  padding: 10px;
 }
