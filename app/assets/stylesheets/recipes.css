@@ -74,3 +74,50 @@ th {
   border: 1px solid;
   border-collapse: collapse;
 }
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch .toggle-checkbox {
+  display: none;
+}
+
+.toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: gray;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-label::before {
+  content: '';
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: white;
+  top: 4px;
+  left: 4px;
+  transition: transform 0.3s;
+}
+
+.toggle-switch .toggle-checkbox:checked + .toggle-label {
+  background-color: green;
+}
+
+.toggle-switch .toggle-checkbox:checked + .toggle-label::before {
+  transform: translateX(26px);
+}
+
+form.lone-switch input[type='submit'] {
+  display: none;
+}
