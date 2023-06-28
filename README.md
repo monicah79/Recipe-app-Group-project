@@ -140,4 +140,4 @@ I would like to thank my team for their effortless collaboration which has resul
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/monicah79/Renters_ke/blob/setup/license) licensed.
+This project is [MIT](https://github.com/monicah79/Recipe-app-Group-project/blob/Public-recipe-setup/license) licensed.
