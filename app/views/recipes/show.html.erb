@@ -1,7 +1,5 @@
-<p style="color: green"><%= notice %></p>
 
-
-<main>
+<main data-controller="recipes">
 <h1>Recipe <%= @recipe.id %></h1>
 
 <div class="container-time">
@@ -20,7 +18,16 @@
    
   </p>
   </div>
-  <button>Public</button>
+  <div>
+    <span>Public</span>
+    <%= form_with model: @recipe, url: recipe_path(@recipe), method: :patch, class: "lone-switch", data: {action: "click->recipes#toggleRecipePublic"} do |form| %>
+      <div class="toggle-switch" >
+        <%= form.check_box :public, id: "recipe_public_toggle", class: "toggle-checkbox", data: { recipe_id: @recipe.id } %>
+        <label for="recipe_public_toggle" class="toggle-label"></label>
+      </div>
+      <%= form.submit "" %>
+    <% end %>
+  </div>
 
 </div>
 
@@ -61,5 +68,3 @@
 </div>
 
 </main>
-
-
