@@ -27,7 +27,6 @@ class RecipesController < ApplicationController
   def create
     current_user
     @recipe = current_user.recipes.build(recipe_params)
-    p 'tobe saved recipe -------', @recipe
 
     respond_to do |format|
       if @recipe.save
