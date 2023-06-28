@@ -4,6 +4,7 @@ class ShoppingListController < ApplicationController
     current_user
     @recipes = current_user.recipes
     @foods = ShoppingList.all
+    @shopping_list = current_user.shopping_list.includes(:food)
     
 
     @recipe_list = @joined_table = RecipeFood
