@@ -8,4 +8,7 @@ class Recipe < ApplicationRecord
   def total_price
     ingredients.sum(:price)
   end
+  def self.public_recipes
+    where(public: true)
+  end
 end
