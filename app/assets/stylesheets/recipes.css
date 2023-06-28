@@ -81,9 +81,9 @@ th {
   border-collapse: collapse;
 }
 
-
 td {
   padding: 10px;
+}
 
 .toggle-switch {
   position: relative;
@@ -109,7 +109,7 @@ td {
 }
 
 .toggle-label::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 26px;
   height: 26px;
@@ -128,6 +128,6 @@ td {
   transform: translateX(26px);
 }
 
-form.lone-switch input[type='submit'] {
+form.lone-switch input[type="submit"] {
   display: none;
 }
