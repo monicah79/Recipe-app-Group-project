@@ -1,9 +1,9 @@
-<div>
-  <%= inventory.name %>
-  <p><%= inventory.description %><p>
+<main>
+<div class="container-time">
+  
   <%= link_to "Add Food", new_food_url, class: "a-button" %>
   <%= link_to "Add Food Inventory", new_inventory_food_url, class: "a-button" %>
-
+ </div>
   <table>
     <thead>
       <tr>
@@ -23,7 +23,7 @@
     </tbody>
   </table>
 
-</div>
+
 
 <div>
   <%= link_to "Edit this inventory", edit_inventory_path(inventory) %> |
@@ -31,3 +31,4 @@
 
   <%= button_to "Destroy this inventory", inventory, method: :delete %>
 </div>
+</main>

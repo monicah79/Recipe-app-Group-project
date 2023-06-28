@@ -14,15 +14,18 @@
  *= require_self
  */
 
-nav,
-nav ul,
-nav li {
+.nav-list {
   display: flex;
+  flex-direction: row;
+  text-align: center;
   justify-content: center;
 }
 
-nav li {
+.nav-list li {
   list-style-type: none;
+  padding: 0;
+  border: none;
+  text-decoration: none;
 }
 
 nav li a {
