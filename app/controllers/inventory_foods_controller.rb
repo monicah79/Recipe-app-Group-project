@@ -22,7 +22,7 @@ class InventoryFoodsController < ApplicationController
   def create
     @inventory_food = InventoryFood.new(inventory_food_params)
     @inventory_food.inventory_id = session[:return_to].split('/')[-1]
-    
+
     respond_to do |format|
       if @inventory_food.save
         format.html do
