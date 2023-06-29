@@ -3,11 +3,9 @@ class ShoppingListController < ApplicationController
   def index
     current_user
     @recipes = current_user.recipes
-    # @foods = @recipes.flat_map(&:foods).uniq
-    # @total_price = @recipes.sum(&:total_price)
-
-    # recipe_id = params[:recipe_id]
-    # inventory_id = params[:inventory_id]
+    @foods = ShoppingList.all
+    @shopping_list = current_user.shopping_list.includes(:food)
+    
 
     @recipe_list = @joined_table = RecipeFood
       .select('recipe_foods.id, foods.name, foods.price, foods.measurement_unit, recipe_foods.quantity AS rc_qty, inventory_foods.quantity AS inv_qty, inventory_foods.id')
@@ -78,3 +76,9 @@ class ShoppingListController < ApplicationController
     end
   end
 end
+
+# @foods = @recipes.flat_map(&:foods).uniq
+    # @total_price = @recipes.sum(&:total_price)
+
+    # recipe_id = params[:recipe_id]
+    # inventory_id = params[:inventory_id]

@@ -5,6 +5,7 @@
     <%= link_to "Recipe", recipes_path %>
     
   </div>
+  
   <div class="food-limit">
   <p>Total value of food needed: $<%= @total_price %></p>
   <%= link_to "inventory", inventories_path%>
@@ -18,14 +19,13 @@
       </tr>
     </thead>
     <tbody>
-    <% @foods.each do |food| %>
-        <tr>
-          <% quantity = recipe_food.quantity %>
-          <td><%= food.name %></td>
-          <td><%= quantity %></td>
-          <td>$<%= food.price * quantity %></td>
-        </tr>
-      <% end %>
+    <% @shopping_list.each do |item| %>
+      <tr>
+        <td><%= item.food.name %></td>
+        <td><%= item.quantity %></td>
+        <td>$<%= item.food.price * item.quantity %></td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 </section>

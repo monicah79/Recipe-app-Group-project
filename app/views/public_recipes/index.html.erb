@@ -1,8 +1,22 @@
-<h1>Public Recipes</h1>
+<h1 class="public-recipe-heading">Public Recipes</h1>
 
 <% @recipes.each do |recipe| %>
-  <div class="recipe">
-    <h2><%= recipe.name %></h2>
-    <p><%= recipe.description %></p>
+  <div class="">
+  <div>
+  <div class"cards-container">
+   <div class="cards">
+      <div class="recipe">
+        <h2><%= recipe.name %></h2>
+        <p>By: <%= recipe.user.name %></p>
+      </div>
+      <div class="slot ">
+        <p class="ingredients-total">Total food items: <%= 76 %></p>
+        <p class="ingredients-total">Total Price: $ <%= 0 %></p>
+      </div>
+   </div>
   </div>
-<% end %>
+    
+  <% end %>
+  </div>
+  </div>
+ 
