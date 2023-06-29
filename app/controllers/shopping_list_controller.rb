@@ -5,7 +5,6 @@ class ShoppingListController < ApplicationController
     @foods = ShoppingList.all
     @shopping_list = current_user.shopping_list.includes(:food)
 
-
     @recipe_list = @joined_table = RecipeFood
       .select('recipe_foods.id, foods.name, foods.price,
        foods.measurement_unit, recipe_foods.quantity AS rc_qty, inventory_foods.quantity AS inv_qty,
