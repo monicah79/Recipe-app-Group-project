@@ -4,16 +4,22 @@
   <div class="">
   <div>
   <div class"cards-container">
+  <% recipe.recipe_foods.each do |recipe_food| %>
+    <% food = recipe_food.food %>
    <div class="cards">
       <div class="recipe">
         <h2><%= recipe.name %></h2>
         <p>By: <%= recipe.user.name %></p>
       </div>
+      
       <div class="slot ">
-        <p class="ingredients-total">Total food items: <%= 76 %></p>
-        <p class="ingredients-total">Total Price: $ <%= 0 %></p>
+      
+      <p class="ingredients-total">Total food items: <%= recipe_food.quantity %></p>
+      <p class="ingredients-total">Total Price: $ <%= food.price %></p>
+      
       </div>
    </div>
+   <% end %>
   </div>
     
   <% end %>
