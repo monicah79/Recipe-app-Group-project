@@ -21,7 +21,8 @@ class InventoryFoodsController < ApplicationController
   # POST /inventory_foods or /inventory_foods.json
   def create
     @inventory_food = InventoryFood.new(inventory_food_params)
-
+    @inventory_food.inventory_id = session[:return_to].split('/')[-1]
+    
     respond_to do |format|
       if @inventory_food.save
         format.html do
@@ -69,6 +70,6 @@ class InventoryFoodsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def inventory_food_params
-    params.require(:inventory_food).permit(:quantity, :inventory_id, :food_id)
+    params.require(:inventory_food).permit(:quantity, :food_id)
   end
 end

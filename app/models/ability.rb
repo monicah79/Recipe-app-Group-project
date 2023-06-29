@@ -4,13 +4,12 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    if user.role == 'admin'
+    can :read, Recipe, public: true
+
+    return unless user.present?
+    can :manage, Recipe, user_id: user.id
+
+    return unless user.role == 'admin'
       can :manage, :all
-    else
-      can :read, Recipe
-      can :create, Recipe
-      can :update, Recipe, user_id: user.id
-      can :destroy, Recipe, user_id: user.id
-    end
   end
 end
