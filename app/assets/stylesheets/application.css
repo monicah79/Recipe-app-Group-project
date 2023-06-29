@@ -36,3 +36,34 @@ nav li a {
 nav a:active {
   font-weight: bold;
 }
+
+.public-recipe-heading {
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  gap: 50%;
+  margin: 20px 160px;
+  align-items: center;
+  border: 2px solid #000;
+}
+
+.recipe {
+  padding: 40px;
+}
+
+.shopping-list-heading {
+  text-align: center;
+}
+
+.food-limit {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin: 0 160px;
+}
+
+.d-none {
+  display: none;
+}

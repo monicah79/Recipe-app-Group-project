@@ -1,0 +1,31 @@
+<section class="shopping-list-container">
+  <h1 class="shopping-list-heading">Shopping List</h1>
+  <div class="food-limit">
+    <p>Amount of food items to buy: <%= @foods.count %></p>
+    <%= link_to "Recipe", recipes_path %>
+    
+  </div>
+  
+  <div class="food-limit">
+  <p>Total value of food needed: $<%= @total_price %></p>
+  <%= link_to "inventory", inventories_path%>
+  </div>
+  <table>
+    <thead>
+      <tr class="row-headings">
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @shopping_list.each do |item| %>
+      <tr>
+        <td><%= item.food.name %></td>
+        <td><%= item.quantity %></td>
+        <td>$<%= item.food.price * item.quantity %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
