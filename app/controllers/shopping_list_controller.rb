@@ -49,21 +49,21 @@ class ShoppingListController < ApplicationController
         inventory_foods.quantity AS inv_qty,
         inventory_foods.id')
       .joins(:food).left_joins(food: :inventory_foods)
-      .where(recipe_id: 1, 'inventory_foods.inventory_id': 1)
+      # .where(recipe_id: 1, 'inventory_foods.inventory_id': 1)
 
     @recipe_list.each do |record|
-      next unless record.inv_qty < record.rc_qty
+      # next unless record.inv_qty < record.rc_qty
 
-      shopping_qty = record.rc_qty - record.inv_qty
-      shopping_amount = shopping_qty * record.price.to_i
+      # shopping_qty = record.rc_qty - record.inv_qty
+      # shopping_amount = shopping_qty * record.price.to_i
 
-      @total_amount += shopping_amount
+      # @total_amount += shopping_amount
       @shopping_list << {
         name: record.name,
         price: record.price,
         measurement_unit: record.measurement_unit,
-        qty: shopping_qty,
-        amount: shopping_amount
+        qty: record.inv_qty,
+         amount: record.rc_qty
       }
     end
   end
