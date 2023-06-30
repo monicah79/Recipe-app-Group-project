@@ -10,6 +10,15 @@ class RecipesController < ApplicationController
 
   # GET /recipes/1 or /recipes/1.json
   def show
+    @recipe = Recipe.find(params[:id])
+    @inventory_id = params[:inventory_id] # Assuming inventory_id is passed as a parameter
+
+    @inventories = Inventory.all
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @recipe }
+    end
     @foods = Food.all
     @recipe_food = RecipeFood.includes(recipe: :food).where(recipe_id: params[:id])
     @recipe_foods = RecipeFood.find_by(recipe_id: @recipe.id)
@@ -18,6 +27,17 @@ class RecipesController < ApplicationController
   # GET /recipes/new
   def new
     @recipe = Recipe.new
+  end
+
+  def generate_shopping_list
+    p params, '-------------'
+    @recipe = Recipe.find(params[:generate_shopping_list][:recipe_id])
+    @inventory = Inventory.find(params[:generate_shopping_list][:inventory_id])
+
+    # Logic to generate shopping list using the selected inventory and recipe
+
+    redirect_to shopping_list_path(recipe_id: @recipe.id, inventory_id: @inventory.id),
+                notice: 'Shopping list generated successfully.'
   end
 
   # GET /recipes/1/edit
