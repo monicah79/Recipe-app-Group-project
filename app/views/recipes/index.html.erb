@@ -6,17 +6,19 @@
 
   <% @recipes.each do |recipe| %>
   <ul>
-  <%= link_to recipe_path(recipe) do %>
+ 
     <li>
       <div>
+       <%= link_to recipe_path(recipe) do %>
       <h2>
         Recipe <%= recipe.id%>
       </h2>
+       <% end %>
        <%= button_to "Remove", recipe, method: :delete %>
       </div>
       <p> <%= recipe.description%></p>
     </li>
-    <% end %>
+   
   </ul>
     
   <% end %>
