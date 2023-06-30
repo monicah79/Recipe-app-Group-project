@@ -6,12 +6,12 @@
   <div class"cards-container">
    <div class="cards">
       <div class="recipe">
-        <h2><%= recipe.name %></h2>
-        <p>By: <%= recipe.user.name %></p>
+        <h2><%= recipe.recipe_name %></h2>
+        <p>By: <%= recipe.author_name %></p>
       </div>
       <div class="slot ">
-        <p class="ingredients-total">Total food items: <%= 76 %></p>
-        <p class="ingredients-total">Total Price: $ <%= 0 %></p>
+        <p class="ingredients-total">Total food items: <%= recipe.food_count %></p>
+        <p class="ingredients-total">Total Price: $ <%= recipe.total_amount %></p>
       </div>
    </div>
   </div>
