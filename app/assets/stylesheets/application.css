@@ -68,8 +68,6 @@ nav a:active {
   display: none;
 }
 
-/* application.css */
-/* Modal styles */
 .modal {
   display: none;
   position: fixed;
