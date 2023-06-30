@@ -1,0 +1,24 @@
+first_recipe_food:
+  quantity: 3
+  recipe: first_recipe
+  food: first_food
+
+second_recipe_food:
+  quantity: 2
+  recipe: first_recipe
+  food: second_food
+
+third_recipe_food:
+  quantity: 3
+  recipe: first_recipe
+  food: third_food
+
+fourth_recipe_food:
+  quantity: 2
+  recipe: second_recipe
+  food: second_food
+
+fifth_recipe_food:
+  quantity: 3
+  recipe: second_recipe
+  food: fourth_food

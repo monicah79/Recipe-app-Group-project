@@ -1,0 +1,19 @@
+first_inventory_food:
+  quantity: 2
+  inventory: first_inventory
+  food: first_food
+
+second_inventory_food:
+  quantity: 2
+  inventory: first_inventory
+  food: second_food
+
+third_inventory_food:
+  quantity: 4
+  inventory: second_inventory
+  food: second_food
+
+fourth_inventory_food:
+  quantity: 1
+  inventory: second_inventory
+  food: third_food
