@@ -11,7 +11,10 @@ Rails.application.routes.draw do
   # resources :shopping_list
   resources :inventories
   resources :users
-  get '/shopping_list', to: 'shopping_list#show', as: 'shopping_list'
+  # get '/shopping_list', to: 'shopping_list#show', as: 'shopping_list'
+
+  get '/shopping_list/:recipe_id', to: 'shopping_list#show', as: 'shopping_list'
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

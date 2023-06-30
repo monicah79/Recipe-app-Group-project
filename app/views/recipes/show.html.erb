@@ -32,6 +32,7 @@
 </div>
 
 <div class="add-ingredient-container">
+<button type="button" class="btn btn-primary" id="openModalButton">Generate Shopping List</button>
 <%= link_to "Add ingredient", new_recipe_food_path(@recipe_food), class: "add-ingredient" %> 
 </div>
 <% if @foods&.empty? %>
@@ -50,9 +51,9 @@
        <% @recipe_food.each do |recipe| %>
           <tr>
             <td><%= recipe.food.name %></td>
-            <td><%= recipe.quantity.to_i * recipe.food.price.to_i %> <%= recipe.food.measurement_unit%> </td>
+            <td><%= recipe.quantity %> <%= recipe.food.measurement_unit%></td>
          
-            <td><%= recipe.quantity %></td>
+            <td><%= recipe.quantity.to_i * recipe.food.price.to_i %> </td>
            <td> 
            <%= link_to "Modify", edit_recipe_food_path(@recipe_foods) %> 
            <%= button_to "Remove", @recipe_foods, method: :delete %>
@@ -68,3 +69,4 @@
 </div>
 
 </main>
+<%= render 'modal' %>
