@@ -30,9 +30,11 @@ class RecipesController < ApplicationController
   end
 
   def generate_shopping_list
-    @inventory = Inventory.find(params[:generate_shopping_list][:inventory_id])
+    p params, "-------------"
     @recipe = Recipe.find(params[:generate_shopping_list][:recipe_id])
+    @inventory = Inventory.find(params[:generate_shopping_list][:inventory_id])
     
+   
     # Logic to generate shopping list using the selected inventory and recipe
     
     redirect_to shopping_list_path(recipe_id: @recipe.id, inventory_id: @inventory.id), notice: 'Shopping list generated successfully.'
