@@ -25,8 +25,8 @@ class ShoppingListController < ApplicationController
   end
 
   def process_recipe_list
-    @recipe = RecipeFood.find(@recipe_id).recipe
-    @inventory = InventoryFood.find(@inventory_id).inventory
+    @recipe = Recipe.find(@recipe_id)
+    @inventory = Inventory.find(@inventory_id)
 
     new_recipe_foods = RecipeFood.select('recipe_foods.id, foods.id AS food_id, foods.name, foods.price
       ,foods.measurement_unit, recipe_foods.quantity').joins(:food).where(recipe_id: @recipe_id)
