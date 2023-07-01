@@ -1,21 +1,23 @@
 <h1 class="public-recipe-heading">Public Recipes</h1>
 
-<% @recipes.each do |recipe| %>
+  <% @public_recipes.each do |recipe| %>
+
   <div class="">
   <div>
   <div class="cards-container">
    <div class="cards">
       <div class="recipe">
-        <h2><%= recipe.recipe_name %></h2>
-        <p>By: <%= recipe.author_name %></p>
+        <h2><%= recipe.name %></h2>
+        <p>By: <%= recipe.user.name %></p>
       </div>
       <div class="slot ">
-        <p class="ingredients-total">Total food items: <%= recipe.food_count %></p>
-        <p class="ingredients-total">Total Price: $ <%= recipe.total_amount %></p>
+        <p class="ingredients-total">Total food items: <%= recipe.food.count %></p>
+        <% total_price = recipe.food.zip(recipe.recipe_foods).sum { |food, recipe_food| food.price.to_i * recipe_food.quantity.to_i } %>
+        <p class="ingredients-total">Total Price: $ <%= total_price %></p>
       </div>
    </div>
   </div>
-    
+
   <% end %>
   </div>
   </div>
