@@ -1,9 +1,9 @@
 first_inventory:
   user: first_user
   name: Inventory 1
-  description: Inventory 1 description
+  description: Inventory1 description
 
 second_inventory:
   user: second_user
   name: Inventory 2
-  description: Inventory 2 description
+  description: Inventory1 description

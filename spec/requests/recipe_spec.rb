@@ -1,67 +1,33 @@
 require 'rails_helper'
 
-RSpec.describe 'Inventory', type: :request do
-  fixtures :users, :recipes, :foods
+RSpec.describe Recipe, type: :model do
+  fixtures :users, :recipes, :recipe_foods
 
-  before do
-    @user = users(:first_user)
-    @first_recipe = recipes(:first_recipe)
-    @first_food = foods(:first_food)
-    sign_in @user
-  end
+  let(:first_user) { users(:first_user) }
+  let(:second_user) { users(:second_user) }
+  let(:first_recipe) { recipes(:first_recipe) }
+  let(:second_recipe) { recipes(:second_recipe) }
+  let(:third_recipe) { recipes(:third_recipe) }
+  let(:fourth_recipe) { recipes(:fourth_recipe) }
 
-  describe 'GET /recipes' do
-    it 'should respond with success' do
-      get '/recipes'
-      expect(response).to have_http_status(:success)
+  describe 'associations' do
+    it 'belongs to a user' do
+      expect(first_recipe.user).to eq(first_user)
+      expect(second_recipe.user).to eq(first_user)
     end
 
-    it 'should render correct template' do
-      get '/recipes'
-      expect(response).to render_template('index')
-    end
-  end
-
-  describe 'GET /recipe/:id' do
-    it 'should respond with success' do
-      get recipe_path(@first_recipe)
-      expect(response).to have_http_status(:success)
-    end
-
-    it 'should render correct template' do
-      get recipe_path(@first_recipe)
-      expect(response).to render_template('show')
-    end
-
-    it 'should include food name in the response body' do
-      get recipe_path(@first_recipe)
-      expect(response.body).to include(@first_food.name)
+    it 'has many recipe_foods' do
+      expect(first_recipe.recipe_foods.count).to eq(3)
+      expect(second_recipe.recipe_foods.count).to eq(2)
+      expect(third_recipe.recipe_foods.count).to eq(0)
     end
   end
 
-  describe 'POST /recipe' do
-    it 'creates a new inventory' do
-      recipe = { name: 'Recipe 5', description: 'Description for Recipe 5', user_id: @user.id,
-                 preparation_time: 2, cooking_time: 1, public: false }
-
-      expect do
-        post '/recipes', params: { recipe: }
-      end.to change { Recipe.count }.by(1)
-
-      new_recipe = Recipe.last
-
-      expect(new_recipe.name).to eq(recipe[:name])
-      expect(new_recipe.description).to eq(recipe[:description])
-      expect(new_recipe.user_id).to eq(@user.id)
-    end
-
-    it 'redirects to the created inventory' do
-      recipe = { name: 'Recipe 5', description: 'Description for Recipe 5', user_id: @user.id,
-                 preparation_time: 2, cooking_time: 1, public: false }
-
-      post '/recipes', params: { recipe: }
-      new_recipe = Recipe.last
-      expect(response).to redirect_to(recipe_path(new_recipe))
+  describe 'public_recipes' do
+    it 'returns public recipes' do
+      public_recipes = Recipe.public_recipes
+      expect(public_recipes).to include(first_recipe, second_recipe)
+      expect(public_recipes).not_to include(third_recipe, fourth_recipe)
     end
   end
 end

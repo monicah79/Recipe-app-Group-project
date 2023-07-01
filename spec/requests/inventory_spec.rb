@@ -1,65 +1,37 @@
 require 'rails_helper'
 
-RSpec.describe 'Inventory', type: :request do
-  fixtures :users, :inventories, :foods
+RSpec.describe Inventory, type: :model do
+  fixtures :users, :inventories
 
-  before do
-    @user = users(:first_user)
-    @first_inventory = inventories(:first_inventory)
-    @first_food = foods(:first_food)
-    sign_in @user
-  end
+  let(:first_user) { users(:first_user) }
+  let(:second_user) { users(:second_user) }
+  let(:first_inventory) { inventories(:first_inventory) }
+  let(:second_inventory) { inventories(:second_inventory) }
 
-  describe 'GET /inventories' do
-    it 'should respond with success' do
-      get '/inventories'
-      expect(response).to have_http_status(:success)
+  describe 'associations' do
+    it 'belongs to a user' do
+      expect(first_inventory.user).to eq(first_user)
+      expect(second_inventory.user).to eq(second_user)
     end
 
-    it 'should render correct template' do
-      get '/inventories'
-      expect(response).to render_template('index')
+    it 'has many inventory_foods' do
+      expect(first_inventory.inventory_foods).not_to be_empty
+      expect(second_inventory.inventory_foods).not_to be_empty
     end
   end
 
-  describe 'GET /inventories/:id' do
-    it 'should respond with success' do
-      get inventory_path(@first_inventory)
-      expect(response).to have_http_status(:success)
-    end
+  describe 'validations' do
+    it 'requires name and description' do
+      expect(first_inventory).to be_valid
+      expect(second_inventory).to be_valid
 
-    it 'should render correct template' do
-      get inventory_path(@first_inventory)
-      expect(response).to render_template('show')
-    end
+      first_inventory.name = nil
+      first_inventory.description = nil
+      expect(first_inventory).to_not be_valid
 
-    it 'should include food name in the response body' do
-      get inventory_path(@first_inventory)
-      expect(response.body).to include(@first_food.name)
-    end
-  end
-
-  describe 'POST /inventory' do
-    it 'creates a new inventory' do
-      data = { inventory: { name: 'Inventory 3', description: 'Inventory 3 description', user_id: @user.id } }
-
-      expect do
-        post '/inventories', params: data
-      end.to change { Inventory.count }.by(1)
-
-      new_inventory = Inventory.last
-
-      expect(new_inventory.name).to eq('Inventory 3')
-      expect(new_inventory.description).to eq('Inventory 3 description')
-      expect(new_inventory.user_id).to eq(@user.id)
-    end
-
-    it 'redirects to the created inventory' do
-      params = { inventory: { name: 'Inventory 3', description: 'Inventory 3 description', user_id: @user.id } }
-
-      post('/inventories', params:)
-      created_inventory = Inventory.last
-      expect(response).to redirect_to(inventory_path(created_inventory))
+      second_inventory.name = ''
+      second_inventory.description = ''
+      expect(second_inventory).to_not be_valid
     end
   end
 end

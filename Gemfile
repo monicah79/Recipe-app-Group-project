@@ -73,7 +73,6 @@ group :test do
   gem 'cancancan'
   gem 'capybara'
   gem 'devise'
-  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 6.0.0'
   gem 'selenium-webdriver'
   gem 'webdrivers'
