@@ -23,7 +23,6 @@ RSpec.describe 'Recipes', type: :system do
     Food.create(name: 'Food 3', price: '150', measurement_unit: 'kg')
     Food.create(name: 'Food 4', price: '100', measurement_unit: 'ltr')
 
-
     @first_recipe_food = @firstrecipe.recipe_foods.create(quantity: 3, food: first_food)
   end
 
