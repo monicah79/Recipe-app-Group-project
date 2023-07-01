@@ -1,6 +1,6 @@
 
 <main data-controller="recipes">
-<h1>Recipe <%= @recipe.id %></h1>
+<h1><%= @recipe.name %></h1>
 
 <div class="container-time">
 <div>
@@ -33,7 +33,7 @@
 
 <div class="add-ingredient-container">
 <button type="button" class="btn btn-primary" id="openModalButton">Generate Shopping List</button>
-<%= link_to "Add ingredient", new_recipe_food_path(@recipe_food), class: "add-ingredient" %> 
+<%= link_to "Add Ingredient", new_recipe_food_path(@recipe_food), class: "add-ingredient" %> 
 </div>
 <% if @foods&.empty? %>
     <p>No foods available.</p>
