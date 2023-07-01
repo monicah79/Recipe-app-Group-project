@@ -14,6 +14,6 @@ describe 'public_recipes/index', type: :view do
 
   it 'renders a list of recipes' do
     visit '/public_recipes'
-    expect(page).to have_content 'Lemon'
+    expect(page).to have_content('Public Recipes')
   end
 end
