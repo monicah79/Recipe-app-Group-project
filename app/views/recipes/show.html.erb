@@ -32,7 +32,7 @@
 </div>
 
 <div class="add-ingredient-container">
-<button type="button" class="btn btn-primary" id="openModalButton">Generate Shopping List</button>
+<button type="button" id="openModalButton" class= "add-ingredient">Generate Shopping List</button>
 <%= link_to "Add Ingredient", new_recipe_food_path(@recipe_food), class: "add-ingredient" %> 
 </div>
 <% if @foods&.empty? %>

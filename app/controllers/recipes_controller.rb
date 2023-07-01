@@ -8,10 +8,9 @@ class RecipesController < ApplicationController
     @recipes = current_user.recipes
   end
 
-
   def show
     @recipe = Recipe.find(params[:id])
-    @inventory_id = params[:inventory_id] 
+    @inventory_id = params[:inventory_id]
 
     @inventories = Inventory.all
 
@@ -37,7 +36,6 @@ class RecipesController < ApplicationController
     redirect_to shopping_list_path(recipe_id: @recipe.id, inventory_id: @inventory.id),
                 notice: 'Shopping list generated successfully.'
   end
-
 
   def edit; end
 
@@ -68,7 +66,6 @@ class RecipesController < ApplicationController
     end
   end
 
-
   def destroy
     @recipe.destroy
 
@@ -90,7 +87,6 @@ class RecipesController < ApplicationController
   def set_recipe
     @recipe = Recipe.find(params[:id])
   end
-
 
   def recipe_params
     params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public, :user_id)
