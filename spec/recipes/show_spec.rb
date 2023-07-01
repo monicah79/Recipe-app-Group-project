@@ -38,7 +38,7 @@ RSpec.describe 'Recipes', type: :system do
     fill_in 'Password', with: '123456'
     click_button 'Log in'
 
-    expect(page).to have_content('Food')
+    expect(page).to have_content('Public Recipes')
     visit recipes_path
 
     expect(page).to have_content('Recipe 1')
@@ -53,12 +53,12 @@ RSpec.describe 'Recipes', type: :system do
     fill_in 'Password', with: '123456'
     click_button 'Log in'
 
-    expect(page).to have_content('Food')
+    expect(page).to have_content('Public Recipes')
     visit recipes_path
     expect(page).to have_link('Add a new recipe', href: new_recipe_path, class: 'add-recipe')
 
     visit recipe_path(@firstrecipe)
-    expect(page).to have_content(@firstrecipe.id)
+    expect(page).to have_content(@firstrecipe.name)
   end
 
   scenario 'I can see a button' do
@@ -68,7 +68,7 @@ RSpec.describe 'Recipes', type: :system do
     fill_in 'Password', with: '123456'
     click_button 'Log in'
 
-    expect(page).to have_content('Food')
+    expect(page).to have_content('Public Recipes')
     visit recipes_path
     expect(page).to have_content(@firstrecipe.name)
     visit recipe_path(@firstrecipe)
@@ -82,25 +82,10 @@ RSpec.describe 'Recipes', type: :system do
     fill_in 'Password', with: '123456'
     click_button 'Log in'
 
-    expect(page).to have_content('Food')
+    expect(page).to have_content('Public Recipes')
     visit recipes_path
     expect(page).to have_content(@firstrecipe.name)
     visit recipe_path(@firstrecipe)
-    expect(page).to have_link('Add ingredient')
+    expect(page).to have_link('Add Ingredient')
   end
-
-  #   scenario "to have the remove button" do
-
-  #     visit new_user_session_path
-
-  #     fill_in 'Email', with: 'mail1@gmail.com'
-  #    fill_in 'Password', with: '123456'
-  #    click_button 'Log in'
-
-  #    expect(page).to have_content('Food')
-  #    visit recipes_path
-  #     expect(page).to have_button('Remove')
-  #     visit recipe_path
-  #    expect(page).to have_button('Generate Shopping List')
-  #   end
 end

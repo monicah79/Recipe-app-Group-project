@@ -1,4 +1,5 @@
 # Recipe-app-Group-project
+
 <a name="Recipe-App"></a>
 
 <!-- TABLE OF CONTENTS -->
@@ -24,7 +25,7 @@
 
 # 📖 Recipe App <a name="about-project"></a>
 
-- 
+-
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -100,6 +101,19 @@ To run tests, run the following command accordingly:
 - GitHub: [@monicah79](https://github.com/monicah79)
 - Twitter: [@MonicahWanjema](https://twitter.com/MonicaWanjema)
 - LinkedIn: [monicah-wanjema](https://www.linkedin.com/in/monicah-wanjema/)
+
+👤 **Kayode Olatunji**
+
+- GitHub: [@githubhandle](https://github.com/Jolak5)
+- Twitter: [@twitterhandle](https://twitter.com/I_amBabakay)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/olatunji-kayode/)
+
+👤 **Damilare Adepoju**
+
+- GitHub: [@githubhandle](https://github.com/adamilare)
+- Twitter: [@twitterhandle](https://twitter.com/mailtodare)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/damilareadepoju)
+- GitUp Page: [My Page](https://adamilare.github.io/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

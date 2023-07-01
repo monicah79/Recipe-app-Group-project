@@ -29,7 +29,7 @@ RSpec.describe 'Recipes', type: :system do
     fill_in 'Password', with: '123456'
     click_button 'Log in'
 
-    expect(page).to have_content('Food')
+    expect(page).to have_content('Public Recipes')
     visit recipes_path
     expect(page).to have_content('Recipe 1')
   end
@@ -41,7 +41,7 @@ RSpec.describe 'Recipes', type: :system do
     fill_in 'Password', with: '123456'
     click_button 'Log in'
 
-    expect(page).to have_content('Food')
+    expect(page).to have_content('Public Recipes')
     visit recipes_path
     expect(page).to have_link('Add a new recipe', href: new_recipe_path, class: 'add-recipe')
   end
@@ -53,7 +53,7 @@ RSpec.describe 'Recipes', type: :system do
     fill_in 'Password', with: '123456'
     click_button 'Log in'
 
-    expect(page).to have_content('Food')
+    expect(page).to have_content('Public Recipes')
     visit recipes_path
     expect(page).to have_content(@firstrecipe.name)
   end
@@ -65,7 +65,7 @@ RSpec.describe 'Recipes', type: :system do
     fill_in 'Password', with: '123456'
     click_button 'Log in'
 
-    expect(page).to have_content('Food')
+    expect(page).to have_content('Public Recipes')
     visit recipes_path
     expect(page).to have_button('Remove')
   end
