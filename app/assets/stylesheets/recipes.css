@@ -1,0 +1,136 @@
+ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+li,
+.inventory-container {
+  border: 2px solid black;
+  display: flex;
+  padding: 10px;
+  justify-content: space-between;
+}
+
+.add-recipe-container {
+  position: relative;
+}
+
+.add-recipe {
+  position: absolute;
+  right: 0;
+  border: 1px solid black;
+  padding: 5px;
+  text-decoration: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  margin: 5% 5%;
+}
+
+main > h1 {
+  text-align: center;
+}
+
+.container-time {
+  display: flex;
+  justify-content: space-between;
+  margin: 5% 0;
+}
+
+.add-ingredient-container,
+.back-recipes-container {
+  margin: 30px 0;
+}
+
+.add-ingredient,
+.back-recipes,
+.add-inventory,
+.a-button,
+.food-button,
+.delete-food {
+  text-decoration: none;
+  padding: 5px;
+  border: 1px solid;
+  color: black;
+}
+
+.add-inventory {
+  width: 10%;
+}
+
+.add-ingredient:hover,
+.a-button:hover,
+.delete-food:hover {
+  background-color: black;
+  color: white;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  margin: 40px 0;
+}
+
+table,
+tr,
+td,
+th {
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 10px;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch .toggle-checkbox {
+  display: none;
+}
+
+.toggle-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: gray;
+  border-radius: 34px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-label::before {
+  content: "";
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: white;
+  top: 4px;
+  left: 4px;
+  transition: transform 0.3s;
+}
+
+.toggle-switch .toggle-checkbox:checked + .toggle-label {
+  background-color: green;
+}
+
+.toggle-switch .toggle-checkbox:checked + .toggle-label::before {
+  transform: translateX(26px);
+}
+
+form.lone-switch input[type="submit"] {
+  display: none;
+}

@@ -1,0 +1,19 @@
+first_food:
+  name: Food 1
+  price: 100
+  measurement_unit: kg
+
+second_food:
+  name: Food 2
+  price: 200
+  measurement_unit: kg
+
+third_food:
+  name: Food 3
+  price: 150
+  measurement_unit: kg
+
+fourth_food:
+  name: Food 4
+  price: 100
+  measurement_unit: ltr

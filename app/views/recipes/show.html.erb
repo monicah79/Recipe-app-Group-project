@@ -1,0 +1,72 @@
+
+<main data-controller="recipes">
+<h1><%= @recipe.name %></h1>
+
+<div class="container-time">
+<div>
+  <p>
+    <strong>Preparation time:</strong>
+    <%= @recipe.preparation_time  %> hours
+  </p>
+
+  <p>
+    <strong>Cooking time:</strong>
+    <%= @recipe.cooking_time  %> hours
+  </p>
+  <p>
+    <strong>Steps goes here</strong>
+   
+  </p>
+  </div>
+  <div>
+    <span>Public</span>
+    <%= form_with model: @recipe, url: recipe_path(@recipe), method: :patch, class: "lone-switch", id: 'public_toggler', data: {action: "click->recipes#toggleRecipePublic"} do |form| %>
+      <div class="toggle-switch" >
+        <%= form.check_box :public, id: "recipe_public_toggle", class: "toggle-checkbox", data: { recipe_id: @recipe.id } %>
+        <label for="recipe_public_toggle" class="toggle-label"></label>
+      </div>
+      <%= form.submit "" %>
+    <% end %>
+  </div>
+
+</div>
+
+<div class="add-ingredient-container">
+<button type="button" id="openModalButton" class= "add-ingredient">Generate Shopping List</button>
+<%= link_to "Add Ingredient", new_recipe_food_path(@recipe_food), class: "add-ingredient" %> 
+</div>
+<% if @foods&.empty? %>
+    <p>No foods available.</p>
+  <% else %>
+    <table>
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Values</th>   
+          <th>Actions</th>   
+        </tr>
+      </thead>
+      <tbody>
+       <% @recipe_food.each do |recipe| %>
+          <tr>
+            <td><%= recipe.food.name %></td>
+            <td><%= recipe.quantity %> <%= recipe.food.measurement_unit%></td>
+         
+            <td><%= recipe.quantity.to_i * recipe.food.price.to_i %> </td>
+           <td> 
+           <%= link_to "Modify", edit_recipe_food_path(@recipe_foods) %> 
+           <%= button_to "Remove", @recipe_foods, method: :delete %>
+           </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+<div class="back-recipes-container">
+  <%= link_to "Back to recipes", recipes_path, class: "back-recipes" %>
+</div>
+
+</main>
+<%= render 'modal' %>

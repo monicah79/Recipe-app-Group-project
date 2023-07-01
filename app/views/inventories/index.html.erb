@@ -1,0 +1,32 @@
+<%
+=begin%>
+ <%= javascript_importmap_tags %> 
+<%
+=end%>
+
+<p style="color: green"><%= notice %></p>
+
+<main>
+<h1>Inventories</h1>
+<ul id="inventories"  class= "inventory-list">
+
+  <% @inventories.each do |inventory|%>
+    <%= link_to inventory_path(inventory) do %>
+      <li>
+      <div>
+      <h2>
+         <%= inventory.name %>
+      </h2>
+          <%= button_to "Remove", inventory, method: :delete %>  
+      </div>
+      <p>  <%= inventory.description %></p>
+    </li> 
+      
+    <% end %>
+  
+  <% end %>
+
+
+<%= link_to "New inventory", new_inventory_path, class: "add-inventory" %>
+</ul>
+</main>

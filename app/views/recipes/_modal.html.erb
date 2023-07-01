@@ -1,0 +1,18 @@
+<!-- _modal.html.erb -->
+<div class="modal" id="myModal">
+
+  <div class="modal-content">
+    <span class="close" id="closeModalButton">&times;</span>
+    <h3 class="modal-title">Generate Shopping List</h3>
+    <h4 class="modal-subtitle">Choose an inventory to use</h4>
+    <%= form_with(url: shopping_list_path(recipe_id: @recipe.id), method: :get) do |form| %>
+       <div class="form-group">
+    
+         <%= form.hidden_field :recipe_id, value: @recipe.id, class: "select" %>
+        <%= form.select :inventory_id, options_for_select(@inventories.map { |inventory| [inventory.name, inventory.id] }), {}, class: 'form-control' %>
+
+    <%= form.submit "Generate", class: "btn btn-primary", id: "generate-shopping-list" %>
+  </div>
+<% end %>
+  </div>
+</div>

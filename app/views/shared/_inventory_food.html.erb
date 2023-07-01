@@ -1,0 +1,34 @@
+<main>
+<div class="container-time">
+  
+  <%= link_to "Add Food", new_food_url, class: "a-button" %>
+  <%= link_to "Add Food Inventory", new_inventory_food_url, class: "a-button" %>
+ </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Food</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% inventory.inventory_foods.each do |inventory_food| %>
+          <tr>
+            <td><%= inventory_food.food.name %></td>
+            <td><%= inventory_food.quantity%> <%= inventory_food.food.measurement_unit %></td>
+            <td><%= button_to "Remove", inventory_food, method: :delete %></td>
+          </tr>
+        <%end%>
+    </tbody>
+  </table>
+
+
+
+<div>
+  <%= link_to "Edit this inventory", edit_inventory_path(inventory), class: "d-none"%>
+  <%= link_to "Back to inventories", inventories_path, class: "back-recipes" %>
+
+  <%= button_to "Destroy this inventory", inventory, method: :delete, class: "d-none" %>
+</div>
+</main>
