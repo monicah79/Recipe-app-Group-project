@@ -5,6 +5,7 @@ export default class extends Controller {
     const formElem = elem.closest('form');
 
     if (formElem) {
+      alert('okay');
       formElem.submit();
     }
   }

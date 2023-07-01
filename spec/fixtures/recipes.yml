@@ -1,0 +1,31 @@
+first_recipe:
+  name: Recipe 1
+  user: first_user
+  preparation_time: 2
+  cooking_time: 1
+  description: Description for Recipe 1
+  public: true
+
+second_recipe:
+  name: Recipe 2
+  user: first_user
+  preparation_time: 2
+  cooking_time: 1
+  description: Description for Recipe 2
+  public: true
+
+third_recipe:
+  name: Recipe 3
+  user: first_user
+  preparation_time: 2
+  cooking_time: 1
+  description: Description for Recipe 3
+  public: false
+
+fourth_recipe:
+  name: Recipe 4
+  user: second_user
+  preparation_time: 2
+  cooking_time: 1
+  description: Description for Recipe 4
+  public: false
