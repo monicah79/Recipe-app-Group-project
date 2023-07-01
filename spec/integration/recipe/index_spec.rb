@@ -23,7 +23,7 @@ RSpec.describe 'Recipe#index page', type: :system do
     expect(page).to have_current_path(new_recipe_path)
   end
 
-  it 'when Food Inventory item is clicked, the page should redirect to a detail Recipe Food page.' do
+  it 'when Food Recipe item is clicked, the page should redirect to a detail Recipe Food page.' do
     visit recipes_path(@user)
 
     click_link @first_recipe.name

@@ -1,33 +1,46 @@
-document.addEventListener("DOMContentLoaded", function () {
-  var openModalButton = document.getElementById("openModalButton");
-  var closeModalButton = document.getElementById("closeModalButton");
-  var generateButton = document.getElementById("generate-shopping-list");
+function toggleRecipePublic(event) {
+  const elem = event.target;
+  const formElem = elem.closest('form');
 
-  var modal = document.getElementById("myModal");
+  if (formElem) {
+    formElem.submit();
+  }
+}
 
-  openModalButton.addEventListener("click", function () {
-    modal.style.display = "block";
+document.addEventListener('DOMContentLoaded', function () {
+  var openModalButton = document.getElementById('openModalButton');
+  var closeModalButton = document.getElementById('closeModalButton');
+  var generateButton = document.getElementById('generate-shopping-list');
+
+  var modal = document.getElementById('myModal');
+
+  let publicToggler = document.getElementById('public_toggler');
+
+  publicToggler.addEventListener('click', toggleRecipePublic);
+
+  openModalButton.addEventListener('click', function () {
+    modal.style.display = 'block';
   });
 
-  closeModalButton.addEventListener("click", function () {
+  closeModalButton.addEventListener('click', function () {
     closeModal();
   });
 
-  generateButton.addEventListener("click", function () {
+  generateButton.addEventListener('click', function () {
     closeModal();
   });
 
-  window.addEventListener("click", function (event) {
+  window.addEventListener('click', function (event) {
     if (event.target == modal) {
       closeModal();
     }
   });
 
   function closeModal() {
-    modal.style.display = "none";
+    modal.style.display = 'none';
   }
 });
 
-window.addEventListener("beforeunload", function () {
+window.addEventListener('beforeunload', function () {
   closeModal();
 });

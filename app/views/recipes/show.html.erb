@@ -20,7 +20,7 @@
   </div>
   <div>
     <span>Public</span>
-    <%= form_with model: @recipe, url: recipe_path(@recipe), method: :patch, class: "lone-switch", data: {action: "click->recipes#toggleRecipePublic"} do |form| %>
+    <%= form_with model: @recipe, url: recipe_path(@recipe), method: :patch, class: "lone-switch", id: 'public_toggler', data: {action: "click->recipes#toggleRecipePublic"} do |form| %>
       <div class="toggle-switch" >
         <%= form.check_box :public, id: "recipe_public_toggle", class: "toggle-checkbox", data: { recipe_id: @recipe.id } %>
         <label for="recipe_public_toggle" class="toggle-label"></label>
