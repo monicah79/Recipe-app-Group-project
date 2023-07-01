@@ -50,7 +50,9 @@ main > h1 {
 .add-ingredient,
 .back-recipes,
 .add-inventory,
-.a-button {
+.a-button,
+.food-button,
+.delete-food {
   text-decoration: none;
   padding: 5px;
   border: 1px solid;
@@ -62,8 +64,8 @@ main > h1 {
 }
 
 .add-ingredient:hover,
-.a-button:hover {
-  padding: 7px;
+.a-button:hover,
+.delete-food:hover {
   background-color: black;
   color: white;
 }
@@ -71,6 +73,7 @@ main > h1 {
 table {
   width: 100%;
   text-align: center;
+  margin: 40px 0;
 }
 
 table,
