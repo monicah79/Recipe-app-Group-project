@@ -3,7 +3,6 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_recipe, only: %i[show edit update destroy]
 
-
   def index
     @recipes = current_user.recipes
   end
@@ -31,7 +30,6 @@ class RecipesController < ApplicationController
     p params, '-------------'
     @recipe = Recipe.find(params[:generate_shopping_list][:recipe_id])
     @inventory = Inventory.find(params[:generate_shopping_list][:inventory_id])
-
 
     redirect_to shopping_list_path(recipe_id: @recipe.id, inventory_id: @inventory.id),
                 notice: 'Shopping list generated successfully.'
@@ -82,7 +80,6 @@ class RecipesController < ApplicationController
   end
 
   private
-
 
   def set_recipe
     @recipe = Recipe.find(params[:id])
